@@ -1,5 +1,4 @@
-#ifndef __LIBRARIES_H
-#define __LIBRARIES_H
+#pragma once
 #include "ak8975.h"
 #include "beep.h"
 #include "bme280.h"
@@ -14,4 +13,4 @@
 #include "oled.h"
 #include "w25q64.h"
 #include "delay.h"
-#endif // !__LIBRARIES_H
+// #include "nvic.h"

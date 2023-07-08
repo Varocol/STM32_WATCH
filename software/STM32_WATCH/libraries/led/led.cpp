@@ -7,9 +7,9 @@
 void led_init()
 {
     GPIO_InitTypeDef led_gpio_initstructure = {
-        .GPIO_Pin   = led_pin,
+        .GPIO_Pin = led_pin,
         .GPIO_Speed = GPIO_Speed_50MHz,
-        .GPIO_Mode  = GPIO_Mode_Out_PP,
+        .GPIO_Mode = GPIO_Mode_Out_PP,
     };
     RCC_APB2PeriphClockCmd(led_rcc, ENABLE);
     GPIO_Init(led_port, &led_gpio_initstructure);

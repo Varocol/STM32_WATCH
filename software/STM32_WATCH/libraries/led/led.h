@@ -1,5 +1,5 @@
-#ifndef __LED_H
-#define __LED_H
+#pragma once
+
 #include "stm32f10x.h"
 
 #define led_port GPIOB
@@ -10,5 +10,3 @@ void led_init();
 void led_on();
 void led_off();
 void led_toggle();
-
-#endif // __LED_H
