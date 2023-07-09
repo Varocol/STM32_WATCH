@@ -33,7 +33,7 @@ FSMCodingStyle=eFMSDropDownList_OneProcess
 FSMEncodingStyle=eFMSDropDownList_OneHot
 IsProjectConflictPreventionWarningsEnabled=1
 IsVirtualBomDocumentRemoved=1
-OutputPath=Project Outputs for STM32_Watch
+OutputPath=
 LogFolderPath=
 ManagedProjectGUID=D2FFBF68-FA43-4D1B-B8E8-E2C58B7C747F
 VaultGUID=EFF971FE-5620-4B5D-8564-608C801A88F7
@@ -100,7 +100,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=
+DocumentUniqueId=JRAQBFHH
 
 [Document4]
 DocumentPath=V1.2\V1.2-核心板.SchDoc
@@ -344,7 +344,7 @@ SCH_HasExpandLogicalToPhysicalSheets=-1
 SaveSettingsToOutJob=-1
 
 [Generic_EDE]
-OutputDir=Project Outputs for STM32_Watch
+OutputDir=
 
 [OutputGroup1]
 Name=Netlist Outputs

@@ -11,7 +11,8 @@ void delay_ms(uint32_t ms)
     RCC_GetClocksFreq(&RCC_Clocks);
     uint32_t System_Speed = RCC_Clocks.SYSCLK_Frequency / 1000000;
     SysTick_Config(System_Speed * 1000);
-    for (uint32_t i = 0; i < ms; i++) {
+    for (uint32_t i = 0; i < ms; i++)
+    {
         while (!(SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk))
             ;
     }
@@ -28,7 +29,8 @@ void delay_us(uint32_t us)
     RCC_ClocksTypeDef RCC_Clocks;
     RCC_GetClocksFreq(&RCC_Clocks);
     SysTick_Config(RCC_Clocks.SYSCLK_Frequency / 1000000);
-    for (uint32_t i = 0; i < us; i++) {
+    for (uint32_t i = 0; i < us; i++)
+    {
         while (!(SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk))
             ;
     }
@@ -44,7 +46,8 @@ void delay_us(uint32_t us)
 void delay(uint32_t count, uint32_t ticks)
 {
     SysTick_Config(ticks);
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < count; i++)
+    {
         while (!(SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk))
             ;
     }

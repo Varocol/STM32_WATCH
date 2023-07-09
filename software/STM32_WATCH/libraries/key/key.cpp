@@ -1,4 +1,5 @@
 #include "key.h"
+#include "variables.h"
 
 /**
  * @brief  按键初始化
@@ -62,10 +63,52 @@ void keys_intterupt_init()
 }
 
 /**
- * @brief  按键中断服务函数
+ * @brief  按键中断服务函数(用于更新按键状态)
  * @retval None
  */
 void keys_intterupt_function()
 {
-    
+    Key_Status key1_tmp, key2_tmp, key3_tmp, key4_tmp;
+    key1_tmp = (Key_Status)GPIO_ReadInputDataBit(key1_port, key1_pin);
+    key2_tmp = (Key_Status)GPIO_ReadInputDataBit(key2_port, key2_pin);
+    key3_tmp = (Key_Status)GPIO_ReadInputDataBit(key3_port, key3_pin);
+    key4_tmp = (Key_Status)GPIO_ReadInputDataBit(key4_port, key4_pin);
+    // 累加key press时间
+    if (key1_tmp != key1_status)
+    {
+        key1_status_time = 0;
+    }
+    else
+    {
+        key1_status_time++;
+    }
+    if (key2_tmp != key2_status)
+    {
+        key2_status_time = 0;
+    }
+    else
+    {
+        key2_status_time++;
+    }
+    if (key3_tmp != key3_status)
+    {
+        key3_status_time = 0;
+    }
+    else
+    {
+        key3_status_time++;
+    }
+    if (key4_tmp != key4_status)
+    {
+        key4_status_time = 0;
+    }
+    else
+    {
+        key4_status_time++;
+    }
+    // 更新状态
+    key1_status = key1_tmp;
+    key2_status = key2_tmp;
+    key3_status = key3_tmp;
+    key4_status = key4_tmp;
 }

@@ -1,4 +1,5 @@
 #pragma once
+
 #include "ak8975.h"
 #include "beep.h"
 #include "bme280.h"
@@ -13,4 +14,5 @@
 #include "oled.h"
 #include "w25q64.h"
 #include "delay.h"
-// #include "nvic.h"
+#include "nvic.h"
+#include "variables.h"

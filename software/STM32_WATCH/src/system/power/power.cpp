@@ -11,7 +11,7 @@ void power_on()
     // 开机初始化引脚
     GPIO_InitTypeDef pwr_gpio_initstructure = {
         .GPIO_Pin = pwr_pin,
-        .GPIO_Speed = GPIO_Speed_50MHz,
+        .GPIO_Speed = GPIO_Speed_2MHz,
         .GPIO_Mode = GPIO_Mode_Out_PP,
     };
     RCC_APB2PeriphClockCmd(pwr_rcc, ENABLE);

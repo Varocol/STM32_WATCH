@@ -152,13 +152,13 @@ void SysTick_Handler(void)
  * @param  None
  * @retval None
  */
-// void TIM2_IRQHandler(void)
-// {
-//   if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
-//   {
-//     // delay_ms(1000);
-//     TIM_ClearITPendingBit(TIM2, TIM_FLAG_Update);
-//   }
-// }
+void TIM2_IRQHandler(void)
+{
+  if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
+  {
+    keys_intterupt_function();
+    TIM_ClearITPendingBit(TIM2, TIM_FLAG_Update);
+  }
+}
 
 /******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/

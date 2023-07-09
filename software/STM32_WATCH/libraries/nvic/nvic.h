@@ -1,4 +1,5 @@
 #pragma once
+
 #include "stm32f10x.h"
 #define NVIC_PriorityGroup NVIC_PriorityGroup_0
 

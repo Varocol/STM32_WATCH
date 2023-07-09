@@ -1,6 +1,5 @@
 #pragma once
 
-#include "variables.h"
 #include "stm32f10x.h"
 #include "nvic.h"
 
@@ -23,6 +22,12 @@
 #define key_tim TIM2
 #define key_rcc_periph RCC_APB1Periph_TIM2
 #define key_polling_ms 1
+
+typedef enum
+{
+    Pressed,
+    Released,
+} Key_Status;
 
 void keys_init();
 void keys_intterupt_init();
