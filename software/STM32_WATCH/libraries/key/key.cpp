@@ -35,19 +35,23 @@ void keys_init()
  */
 void keys_intterupt_init()
 {
-    // 获取系统时钟频率
-    RCC_ClocksTypeDef RCC_Clocks;
-    RCC_GetClocksFreq(&RCC_Clocks);
-    // 配置TIM2
+    // 配置TIM
     TIM_TimeBaseInitTypeDef key_tim_TimeBaseInitstructure = {
-        .TIM_Prescaler = (uint16_t)(RCC_Clocks.SYSCLK_Frequency / 1000000), // 72
+        .TIM_Prescaler = (uint16_t)(RCC_Clocks.SYSCLK_Frequency / 1000000 - 1), // 71(1us)
         .TIM_CounterMode = TIM_CounterMode_Up,
-        .TIM_Period = 1000 - key_polling_ms, // 计1000次,这样每次1ms
-        .TIM_ClockDivision = TIM_CKD_DIV1,   // 输入信号滤波频率
-        .TIM_RepetitionCounter = 0           // 重复次数,只用通用和高级定时器才有
+        .TIM_ClockDivision = TIM_CKD_DIV1, // 输入信号滤波频率
+        .TIM_RepetitionCounter = 0         // 重复次数,只有高级定时器才有
     };
+    key_tim_TimeBaseInitstructure.TIM_Period = (key_polling_ms / 1000.0) * (RCC_Clocks.SYSCLK_Frequency * 1.0 / (key_tim_TimeBaseInitstructure.TIM_Prescaler + 1));
     // 开启RCC
-    RCC_APB1PeriphClockCmd(key_rcc_periph, ENABLE);
+    if (key_tim == TIM1)
+    {
+        RCC_APB2PeriphClockCmd(key_tim_rcc, ENABLE);
+    }
+    else
+    {
+        RCC_APB1PeriphClockCmd(key_tim_rcc, ENABLE);
+    }
     // TIMx寄存器复位
     TIM_DeInit(key_tim);
     // 配置基本参数
@@ -55,7 +59,7 @@ void keys_intterupt_init()
     // 清除计时器中断标志位
     TIM_ClearFlag(key_tim, TIM_FLAG_Update);
     // 配置中断向量
-    NVIC_Config(NV_TIM2);
+    nvic_config(NV_TIM3);
     // 配置计时器中断
     TIM_ITConfig(key_tim, TIM_IT_Update, ENABLE);
     // 开启定时器
@@ -80,7 +84,7 @@ void keys_intterupt_function()
     }
     else
     {
-        key1_status_time++;
+        key1_status_time += key_polling_ms;
     }
     if (key2_tmp != key2_status)
     {
@@ -88,7 +92,7 @@ void keys_intterupt_function()
     }
     else
     {
-        key2_status_time++;
+        key2_status_time += key_polling_ms;
     }
     if (key3_tmp != key3_status)
     {
@@ -96,7 +100,7 @@ void keys_intterupt_function()
     }
     else
     {
-        key3_status_time++;
+        key3_status_time += key_polling_ms;
     }
     if (key4_tmp != key4_status)
     {
@@ -104,7 +108,7 @@ void keys_intterupt_function()
     }
     else
     {
-        key4_status_time++;
+        key4_status_time += key_polling_ms;
     }
     // 更新状态
     key1_status = key1_tmp;

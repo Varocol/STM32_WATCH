@@ -1,7 +1,7 @@
 #include "power.h"
 
 /**
- * @brief  开机
+ * @brief  上电
  * @retval None
  */
 void power_on()

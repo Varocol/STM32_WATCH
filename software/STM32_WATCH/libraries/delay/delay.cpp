@@ -7,8 +7,6 @@
  */
 void delay_ms(uint32_t ms)
 {
-    RCC_ClocksTypeDef RCC_Clocks;
-    RCC_GetClocksFreq(&RCC_Clocks);
     uint32_t System_Speed = RCC_Clocks.SYSCLK_Frequency / 1000000;
     SysTick_Config(System_Speed * 1000);
     for (uint32_t i = 0; i < ms; i++)
@@ -26,8 +24,6 @@ void delay_ms(uint32_t ms)
  */
 void delay_us(uint32_t us)
 {
-    RCC_ClocksTypeDef RCC_Clocks;
-    RCC_GetClocksFreq(&RCC_Clocks);
     SysTick_Config(RCC_Clocks.SYSCLK_Frequency / 1000000);
     for (uint32_t i = 0; i < us; i++)
     {

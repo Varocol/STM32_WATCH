@@ -148,16 +148,39 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
+ * @brief  This function handles TIM1 Handler.
+ * @param  None
+ * @retval None
+ */
+void TIM1_UP_IRQHandler(void)
+{
+  if (TIM_GetITStatus(TIM1, TIM_IT_Update) != RESET)
+  {
+    beep_interrupt_function();
+    TIM_ClearITPendingBit(TIM1, TIM_FLAG_Update);
+  }
+}
+
+/**
  * @brief  This function handles TIM2 Handler.
  * @param  None
  * @retval None
  */
 void TIM2_IRQHandler(void)
 {
-  if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
+}
+
+/**
+ * @brief  This function handles TIM3 Handler.
+ * @param  None
+ * @retval None
+ */
+void TIM3_IRQHandler(void)
+{
+  if (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)
   {
     keys_intterupt_function();
-    TIM_ClearITPendingBit(TIM2, TIM_FLAG_Update);
+    TIM_ClearITPendingBit(TIM3, TIM_FLAG_Update);
   }
 }
 

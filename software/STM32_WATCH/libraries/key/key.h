@@ -19,10 +19,9 @@
 #define key4_pin GPIO_Pin_13
 #define key4_rcc RCC_APB2Periph_GPIOC
 
-#define key_tim TIM2
-#define key_rcc_periph RCC_APB1Periph_TIM2
+#define key_tim TIM3
+#define key_tim_rcc RCC_APB1Periph_TIM3
 #define key_polling_ms 1
-
 typedef enum
 {
     Pressed,

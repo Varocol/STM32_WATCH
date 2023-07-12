@@ -15,4 +15,5 @@
 #include "w25q64.h"
 #include "delay.h"
 #include "nvic.h"
-#include "variables.h"
+#include "uart.h"
+#include "clock.h"

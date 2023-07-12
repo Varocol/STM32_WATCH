@@ -1,0 +1,4 @@
+系统环境变量
+key 
+beep 
+clock

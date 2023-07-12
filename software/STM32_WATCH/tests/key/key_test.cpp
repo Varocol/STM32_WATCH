@@ -5,6 +5,7 @@ int main()
 {
     power_on();
     led_init();
+    nvic_group_init();
     keys_init();
     keys_intterupt_init();
     while (1)

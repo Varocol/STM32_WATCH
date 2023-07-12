@@ -5,8 +5,9 @@
 
 typedef enum
 {
-    NV_TIM2,
+    NV_TIM1_UP,
+    NV_TIM3,
 } NVIC_Selection;
 
-void NVIC_GroupInit();
-void NVIC_Config(NVIC_Selection nvic_selection);
+void nvic_group_init();
+void nvic_config(NVIC_Selection nvic_selection);
